@@ -28,7 +28,6 @@ function App() {
   const [seriesInternationalReserves, setSeriesInternationalReserves] = useState([]);
   const [seriesInternationalReservesMonth, setSeriesInternationalReservesMonth] = useState([]);
   const [seriesBondYields, setSeriesBondYields] = useState([]);
-  const [seriesBondSpread, setSeriesBondSpread] = useState([]);
 
   // Default date on page load
   const defaultDate = new Date('2026-02-28');
@@ -78,9 +77,6 @@ function App() {
           break;
         case 'plot_4c1.csv':
           setSeriesBondYields(data);
-          break;
-        case 'plot_4c2.csv':
-          setSeriesBondSpread(data);
           break;
         default:
           break;
@@ -388,14 +384,14 @@ function App() {
             <button type="button" className="tab_button button_global" onClick={(event) => changeTab(event, '.tab_content_global', 'Global', 'default-background.jpg')}>
               <div className="label label_title">Shipping</div>
               <div className="label label_subtitle">Indicators</div>
-              <DashBoardItem idx="0" image={`${path}assets/img/icons/sohd-2026-shipping-w.svg`} series={seriesInflationRegion} series_value_name="developingcountries" title="Ship transits" unit="%" appID={appID} selected_date={selectedDate} frequency="Monthly" />
+              <DashBoardItem idx="0" image={`${path}assets/img/icons/sohd-2026-shipping-w.svg`} series={seriesGDPNowCast} series_value_name="transits" title="Ship transits" unit="%" appID={appID} selected_date={selectedDate} frequency="Daily" />
             </button>
           </div>
           <div className="tab_container">
             <button type="button" className="tab_button button_food not_selected" onClick={(event) => changeTab(event, '.tab_content_food', 'Food', 'default-background.jpg')}>
               <span className="label label_title">Food</span>
               <div className="label label_subtitle">Indicators</div>
-              <DashBoardItem idx="1" image={`${path}assets/img/icons/sohd-2026-food-w.png`} series={seriesFaoFoodPriceIndex} series_value_name="value" title="Commodity food prices" unit="%" appID={appID} selected_date={selectedDate} frequency="Monthly" />
+              <DashBoardItem idx="1" image={`${path}assets/img/icons/sohd-2026-food-w.png`} series={seriesWheatAgriculture} series_value_name="index" title="Commodity food prices" unit="%" appID={appID} selected_date={selectedDate} frequency="Monthly" />
             </button>
           </div>
           <div className="tab_container">
@@ -409,7 +405,7 @@ function App() {
             <button type="button" className="tab_button button_finance not_selected" onClick={(event) => changeTab(event, '.tab_content_finance', 'Finance', 'default-background.jpg')}>
               <span className="label label_title">Finance</span>
               <div className="label label_subtitle">Indicators</div>
-              <DashBoardItem idx="3" image={`${path}assets/img/icons/sohd-2026-finance-w.png`} series={seriesBondSpread} series_value_name="emergingmarkets_4c2" title="Emerging markets: sovereign bond spread" unit="%" appID={appID} selected_date={selectedDate} frequency="Daily" />
+              <DashBoardItem idx="3" image={`${path}assets/img/icons/sohd-2026-finance-w.png`} series={seriesInternationalReserves} series_value_name="emerging" title="Emerging markets: sovereign bond spread" unit="%" appID={appID} selected_date={selectedDate} frequency="Daily" />
             </button>
           </div>
         </div>
@@ -423,10 +419,10 @@ function App() {
                 <a href={`${path}assets/data/bulk_data_shipping.xlsx`} download className="button_default_container btn-download"><span>Download Shipping Dataset</span></a>
               </div>
             </div>
-            <ChartContainer title="Global GDP Nowcast" id="datawrapper-chart-CtUz4" src="https://datawrapper.dwcdn.net/CtUz4" meta={[{ label: 'Nowcast', value_name: 'nowcast' }]} series={seriesGDPNowCast} frequency="Daily" selected_date={selectedDate} />
-            <ChartContainer title="Inflation rates" id="datawrapper-chart-nK6Hr" src="https://datawrapper.dwcdn.net/nK6Hr" meta={[{ label: 'Developed Countries', value_name: 'developedcountries' }, { label: 'Developing Countries', value_name: 'developingcountries' }]} series={seriesInflationRegion} frequency="Daily" selected_date={selectedDate} methodology="Data on Year-on-Year Consumer Price Index (CPI) variation for 174 countries. UN country group classifications. Group aggregates are estimated as the median value. Latest data point estimated once 80% of countries in a group have reported data." />
-            <ChartContainer title="Central bank policy rates" id="datawrapper-chart-CwGjy" src="https://datawrapper.dwcdn.net/CwGjy" meta={[{ label: 'Developed Countries', value_name: 'developedcountries' }, { label: 'Developing Countries', value_name: 'developingcountries' }]} series={seriesInterestRates} frequency="Daily" selected_date={selectedDate} methodology="UN GCRG calculations based on Refinitiv. Data on central bank policy rates for 159 countries. UN country group classifications. Group aggregates are estimated as the median value. Latest data point estimated once 80% of countries in a group have reported data." />
-            <ChartContainer title="Price of shipping" id="datawrapper-chart-RY0Fg" src="https://datawrapper.dwcdn.net/RY0Fg" meta={[{ label: 'Clarksea Index', value_name: 'clarksea' }]} series={seriesClarkson} frequency="Weekly" selected_date={selectedDate} />
+            <ChartContainer title="Transit through the Strait of Hormuz" id="datawrapper-chart-CtUz4" src="https://datawrapper.dwcdn.net/CtUz4" meta={[{ label: 'Transits', value_name: 'transits' }]} series={seriesGDPNowCast} frequency="Daily" selected_date={selectedDate} />
+            <ChartContainer title="Cost of marine fuel" id="datawrapper-chart-nK6Hr" src="https://datawrapper.dwcdn.net/nK6Hr" meta={[{ label: 'High sulphur', value_name: 'highsulfur' }, { label: 'Low sulphur', value_name: 'lowsulfur' }]} series={seriesInflationRegion} frequency="Daily" selected_date={selectedDate} />
+            <ChartContainer title="Freight costs for shipping oil" id="datawrapper-chart-CwGjy" src="https://datawrapper.dwcdn.net/CwGjy" meta={[{ label: 'Dirty tankers', value_name: 'dirty_tanker' }, { label: ' Clean tankers', value_name: 'clean_tanker' }]} series={seriesInterestRates} frequency="Daily" selected_date={selectedDate} methodology="UN GCRG calculations based on Refinitiv. Data on central bank policy rates for 159 countries. UN country group classifications. Group aggregates are estimated as the median value. Latest data point estimated once 80% of countries in a group have reported data." />
+            <ChartContainer title="Price of shipping" id="datawrapper-chart-RY0Fg" src="https://datawrapper.dwcdn.net/RY0Fg" meta={[{ label: 'Containers', value_name: 'containers' }, { label: ' Bulk', value_name: 'bulk' }]} series={seriesClarkson} frequency="Weekly" selected_date={selectedDate} />
           </div>
           <div className="tab_content tab_content_food">
             <div className="tab_content_title">
@@ -440,7 +436,7 @@ function App() {
             <ChartContainer title="FAO Food Price Index" id="datawrapper-chart-3spao" src="https://datawrapper.dwcdn.net/3spao" meta={[{ label: 'FAO Food Price Index', value_name: 'value' }]} series={seriesFaoFoodPriceIndex} frequency="Monthly" selected_date={selectedDate} />
             <ChartContainer title="Commodity food prices" id="datawrapper-chart-xe9L9" src="https://datawrapper.dwcdn.net/xe9L9" meta={[{ label: 'Agricultural and Livestock Index', value_name: 'index' }]} series={seriesWheatAgriculture} frequency="Daily" selected_date={selectedDate} />
             <ChartContainer title="Fertilizer prices" id="datawrapper-chart-E2VH4" src="https://datawrapper.dwcdn.net/E2VH4" meta={[{ label: 'Diammonium Phosphate', value_name: 'diammonium' }, { label: 'Urea', value_name: 'urea' }]} series={seriesWBFertilizerIndex} frequency="Weekly" selected_date={selectedDate} />
-            <ChartContainer title="Food price inflation" id="datawrapper-chart-pKWw6" src="https://datawrapper.dwcdn.net/pKWw6" meta={[{ label: 'Developed Countries', value_name: 'developedcountries' }, { label: 'Developing Countries', value_name: 'developingcountries' }]} series={seriesFoodPriceInflation} frequency="Monthly" selected_date={selectedDate} methodology="Data on Year-on-Year CPI Food variation for 139 countries. UN country group classifications. Group aggregates are estimated as the median value. Latest data point estimated once 80% of countries in a group have reported data." />
+            <ChartContainer title="Food price inflation" id="datawrapper-chart-pKWw6" src="https://datawrapper.dwcdn.net/pKWw6" meta={[{ label: 'Developed Economies', value_name: 'med_developed' }, { label: 'Developing Economies', value_name: 'med_developing' }]} series={seriesFoodPriceInflation} frequency="Monthly" selected_date={selectedDate} methodology="Data on Year-on-Year CPI Food variation for 139 countries. UN country group classifications. Group aggregates are estimated as the median value. Latest data point estimated once 80% of countries in a group have reported data." />
           </div>
           <div className="tab_content tab_content_energy">
             <div className="tab_content_title">
