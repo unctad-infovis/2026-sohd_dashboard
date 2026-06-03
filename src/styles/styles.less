@@ -1,21 +1,53 @@
+/* @import "bootstrap/dist/css/bootstrap.min.css"; */
+
 @import "colors.less";
 @import "~react-datepicker/dist/react-datepicker.css";
 @import "react-datepicker.less";
- /* @import "bootstrap/dist/css/bootstrap.min.css"; */
 
-@font-family-base: "Inter", sans-serif;
+// ── Typography & base ─────────────────────────────────────────
+
+@font-family-base:
+  "Inter",
+  -apple-system,
+  BlinkMacSystemFont,
+  sans-serif;
+@font-weight-black: 800;
+@font-weight-bold: 700;
+@font-weight-semi: 600;
+@font-weight-medium: 500;
+@font-weight-regular: 400;
+@font-weight-light: 300;
+
+@radius-card: 20px;
+@radius-chip: 10px;
+@radius-icon: 12px;
+@radius-full: 100px;
+@transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+@shadow-card:
+  0 20px 60px -20px rgba(10, 37, 64, 0.25),
+  0 4px 12px -4px rgba(10, 37, 64, 0.08);
+@shadow-card-hover: 0 30px 80px -20px rgba(10, 37, 64, 0.3);
+@shadow-icon: 0 6px 16px -4px rgba(0, 158, 219, 0.4);
+@shadow-detail-icon: 0 8px 20px -4px rgba(0, 158, 219, 0.4);
+
 @bp-xs: 500px;
-@bp-xs-plus: 501px;
 @bp-md: 768px;
-@bp-md-plus: 769px;
-@bp-lg: 1300px;
 
-#app-root-2026-sohd_dashboard .app {
-  
-  box-sizing: border-box;
-  font-family: @font-family-base;
-  margin: auto auto;
-  width: 100%;
+#app-root-2026-sohd_dashboard {
+  .app {
+    font-family: @font-family-base;
+    -webkit-font-smoothing: antialiased;
+    margin: 0 auto;
+    background: #f5f5f5;
+    border-radius: 33px;
+    padding: 25px 0;
+    color: #0a0a0a;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    margin: auto auto;
+    width: 100%;
+  }
 
   .app_content {
     height: auto;
@@ -32,195 +64,23 @@
       cursor: pointer;
     }
 
-    .button_default_container {
-      width: 100%;
-      text-transform: uppercase;
-      padding: 10px 15px 10px 15px;
-      max-width: fit-content;
-      cursor: pointer;
+    .dashboard-note {
+      box-sizing: border-box;
+      margin: 32px auto 0 !important;
+      padding: 0 40px;
+      font-size: 16px !important;
+      line-height: 1.5;
+      font-weight: @font-weight-regular;
+      color: #4b5563;
 
-      &.btn-methodology {
-        @media all and (max-width: @bp-xs) {
-          align-self: flex-end;
-        }
-      }
-
-      &.btn-download {
-        border: var(--bs-border-width) var(--bs-border-style) rgb(0, 0, 0) !important;
-        color: inherit;
-        text-decoration: none;
-        background-color: transparent;
-        outline: none;
-      }
-    }
-
-    .methodology-placeholder {
-      height: 40px;
-      width: 100%;
-    }
-
-    .arrow_icon img {
-      height: 15px;
-      margin: 0 4px 4px 0;
-    }
-
-    .tabs_content {
-      margin: 0 auto auto auto;
-      transition-duration: 0.5s;
-      transition-property: opacity;
-      transition-timing-function: linear;
-
-      .tab_content {
-        align-content: center;
-        box-sizing: border-box;
-        display: none;
-        flex-wrap: wrap;
-        margin: auto auto;
-        opacity: 0;
-
-        .tab_content_title {
-          display: inline-flex;
-          flex-wrap: wrap;
-          align-items: center;
-          width: 100%;
-
-          @media all and (max-width: @bp-xs) {
-            text-align: left;
-            align-content: space-around;
-            flex-wrap: wrap;
-
-            h3 {
-              font-size: 20px;
-            }
-
-            .detail-header .detail-icon {
-              height: 85px;
-            }
-
-            .detail-title-group {
-              margin-bottom: 20px;
-            }
-          }
-        }
-
-        .tab_content_title img {
-          height: 50px;
-        }
-
-        .frequency_tab {
-          margin-top: 0;
-
-          &:last-child:nth-child(even) {
-            width: 100%;
-
-            .chart_container:last-child {
-              width: auto;
-            }
-          }
-
-          .tabs {
-            display: flex;
-            flex-wrap: wrap;
-            flex-direction: row-reverse;
-            margin: -10px -10px -5px 0px;
-            position: relative;
-          }
-
-          .tabs .tabItem {
-            display: block;
-            padding: 3rem 3rem;
-          }
-
-          @media (max-width: 45em) {
-            .tabs div {
-              order: initial;
-            }
-
-            .tabs div {
-              width: 100%;
-              margin-right: 0;
-              margin-top: 0.2rem;
-            }
-          }
-
-          .chart_container {
-            box-sizing: border-box;
-            margin-bottom: 20px;
-            padding: 20px;
-            width: 615px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-
-            @media all and (max-width: @bp-md) {
-              width: auto;
-            }
-
-            .iframe_container {
-              height: 100% !important;
-            }
-
-            iframe {
-              border: none;
-              min-width: 100%;
-              width: 0;
-            }
-
-            .growths_container {
-              display: flex;
-              flex-direction: column;
-              align-items: flex-end;
-
-              .growth_meta {
-                color: #6e6259;
-                font-size: 12px;
-                font-weight: 400;
-                white-space: nowrap;
-                vertical-align: -1px;
-                margin-left: auto;
-              }
-
-              .growth_container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                .growth_label {
-                  color: #000;
-                  display: inline-block;
-                  font-size: 18px;
-                  font-weight: 600;
-                  letter-spacing: -0.01em;
-                  margin-right: 10px;
-                  margin-bottom: 5px;
-                  vertical-align: 5px;
-
-                  .growth_infinite_label {
-                    font-size: 15px;
-                  }
-
-                  @media all and (max-width: @bp-md) {
-                    font-size: 14px;
-                  }
-                }
-
-                .growth_value {
-                  color: #000;
-                  display: inline-block;
-                  font-weight: 600;
-                  vertical-align: middle;
-
-                  @media all and (max-width: @bp-md) {
-                    font-size: 24px;
-                  }
-                }
-              }
-            }
-          }
-        }
+      @media (max-width: 640px) {
+        padding: 0 20px;
       }
     }
   }
-}
 
-@import "basics.less";
+  @import "hero.less";
+  @import "cards-indicator.less";
+  @import "cards-indicator-mobile.less";
+  @import "cards-details.less";
+}

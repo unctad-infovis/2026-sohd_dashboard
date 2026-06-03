@@ -21,7 +21,7 @@ SvgIcon.propTypes = {
 };
 SvgIcon.defaultProps = { strokeWidth: 2 };
 
-// ── Named icons ───────────────────────────────────────────────
+// ── Icons
 
 export function IconShipping() {
   return (
@@ -50,7 +50,6 @@ export function IconFood() {
   );
 }
 
-// The polygon overrides fill="none" locally — standard SVG cascade, no wrapper change needed.
 export function IconEnergy() {
   return (
     <SvgIcon>

@@ -1,7 +1,8 @@
-import React, { useRef } from 'react';
+import React, { forwardRef, useRef } from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import CalendarContainer from './CalendarContainer.jsx';
+import { datePickerHolidays } from '../config/referenceDates.js';
 
 const range = (start, end, step) => {
   const result = [];
@@ -20,14 +21,64 @@ const months = [
   'September', 'October', 'November', 'December',
 ];
 
-const HOLIDAYS = [
-  { date: '2019-01-01', holidayName: 'Beginning of pre-COVID year' },
-  { date: '2020-03-11', holidayName: 'WHO declares COVID 19 Pandemic' },
-  { date: '2022-02-24', holidayName: 'Onset War in Ukraine' },
-  { date: '2023-05-05', holidayName: 'WHO declares end of COVID-19 pandemic' },
-  { date: '2023-10-07', holidayName: 'Onset Israel-Palestine conflict' },
-  { date: '2026-02-28', holidayName: 'Start of military escalation in the Middle East' },
-];
+const DatePickerTrigger = forwardRef(({
+  value,
+  placeholder,
+  className,
+  onClick,
+  onFocus,
+  onBlur,
+  onKeyDown,
+  disabled,
+  tabIndex,
+  'aria-describedby': ariaDescribedBy,
+  'aria-labelledby': ariaLabelledBy,
+}, ref) => (
+  <button
+    type="button"
+    ref={ref}
+    className={['date-picker-trigger', className].filter(Boolean).join(' ')}
+    onClick={onClick}
+    onFocus={onFocus}
+    onBlur={onBlur}
+    onKeyDown={onKeyDown}
+    disabled={disabled}
+    tabIndex={tabIndex}
+    aria-label="Select reference date"
+    aria-describedby={ariaDescribedBy}
+    aria-labelledby={ariaLabelledBy}
+  >
+    {value || placeholder}
+  </button>
+));
+
+DatePickerTrigger.propTypes = {
+  value: PropTypes.string,
+  placeholder: PropTypes.string,
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  onKeyDown: PropTypes.func,
+  disabled: PropTypes.bool,
+  tabIndex: PropTypes.number,
+  'aria-describedby': PropTypes.string,
+  'aria-labelledby': PropTypes.string,
+};
+
+DatePickerTrigger.defaultProps = {
+  value: '',
+  placeholder: '',
+  className: '',
+  onClick: null,
+  onFocus: null,
+  onBlur: null,
+  onKeyDown: null,
+  disabled: false,
+  tabIndex: undefined,
+  'aria-describedby': undefined,
+  'aria-labelledby': undefined,
+};
 
 function CalendarDatePicker({ selectedDate, onChange, onCustomDateSelect }) {
   const pickerRef = useRef(null);
@@ -51,9 +102,11 @@ function CalendarDatePicker({ selectedDate, onChange, onCustomDateSelect }) {
     <DatePicker
       ref={pickerRef}
       className=""
+      customInput={<DatePickerTrigger />}
       showIcon
       showPreviousMonths
       withPortal
+      portalId="sohd-dashboard-datepicker-portal"
       monthsShown={1}
       selected={selectedDate}
       onChange={onChange}
@@ -61,7 +114,7 @@ function CalendarDatePicker({ selectedDate, onChange, onCustomDateSelect }) {
       dateFormat="d MMMM yyyy"
       showTimeSelect={false}
       peekNextMonth
-      holidays={HOLIDAYS}
+      holidays={datePickerHolidays}
       minDate={new Date('2019-01-01')}
       maxDate={new Date()}
       placeholderText="Select Reference Date"

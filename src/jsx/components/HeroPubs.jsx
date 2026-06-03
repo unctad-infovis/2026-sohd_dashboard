@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import heroPublications from '../config/heroPublications.js';
 
 const path = process.env.PUBLIC_URL;
 
 function HeroPubs() {
   const [pubsOpen, setPubsOpen] = useState(false);
+  const publicationCount = heroPublications.length;
+  const publicationLabel = publicationCount === 1 ? 'publication' : 'publications';
 
   useEffect(() => {
     const handleClickOutside = () => setPubsOpen(false);
@@ -24,7 +27,7 @@ function HeroPubs() {
         onClick={() => setPubsOpen((prev) => !prev)}
       >
         <span>Related publications</span>
-        <span className="hero-pubs-count">2</span>
+        <span className="hero-pubs-count">{publicationCount}</span>
 
         <svg
           className="hero-pubs-chevron"
@@ -41,61 +44,40 @@ function HeroPubs() {
 
       <div className="hero-pubs-dropdown">
         <div className="hero-pubs-dropdown-header">
-          <span className="hero-pubs-dropdown-label">2 publications</span>
+          <span className="hero-pubs-dropdown-label">
+            {`${publicationCount} ${publicationLabel}`}
+          </span>
         </div>
 
         <div className="hero-pubs-dropdown-grid">
-          <a
-            href="https://unctad.org/publication/strait-hormuz-disruptions-growth-and-financial-implications"
-            className="pub-item"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="pub-item-cover cover-maritime">
-              <span className="pub-item-badge">
-                <span className="pub-item-dot" />
-                Report
-              </span>
+          {heroPublications.map((publication) => (
+            <a
+              key={publication.href}
+              href={publication.href}
+              className="pub-item"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className={`pub-item-cover ${publication.coverClassName}`}>
+                <span className="pub-item-badge">
+                  <span className="pub-item-dot" />
+                  {publication.type}
+                </span>
 
-              <img
-                src={`${path}assets/img/strait-of-hormuz-april.png`}
-                alt="Strait of Hormuz April 2026"
-                className="pub-item-img"
-              />
-            </div>
+                <img
+                  src={`${path}${publication.image}`}
+                  alt={publication.imageAlt}
+                  className="pub-item-img"
+                />
+              </div>
 
-            <div className="pub-item-title">
-              Growth and financial implications
-            </div>
+              <div className="pub-item-title">
+                {publication.title}
+              </div>
 
-            <div className="pub-item-meta">April 2026</div>
-          </a>
-
-          <a
-            href="https://unctad.org/publication/strait-hormuz-disruptions-implications-global-trade-and-development"
-            className="pub-item"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div className="pub-item-cover cover-trade">
-              <span className="pub-item-badge">
-                <span className="pub-item-dot" />
-                Brief
-              </span>
-
-              <img
-                src={`${path}assets/img/strait-of-hormuz-march.png`}
-                alt="Strait of Hormuz March 2026"
-                className="pub-item-img"
-              />
-            </div>
-
-            <div className="pub-item-title">
-              Implications for global trade and development
-            </div>
-
-            <div className="pub-item-meta">March 2026</div>
-          </a>
+              <div className="pub-item-meta">{publication.dateLabel}</div>
+            </a>
+          ))}
         </div>
       </div>
     </div>

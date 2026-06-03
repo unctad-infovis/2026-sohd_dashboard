@@ -1,16 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IconDownload, IconClose } from './Icons.jsx';
-
-const path = process.env.PUBLIC_URL;
+import { IconClose } from './Icons.jsx';
 
 function CardDetails({
   tabContentClass,
   icon,
   title,
   subtitle,
-  downloadFile,
-  downloadLabel,
   onClose,
   children,
 }) {
@@ -27,15 +23,6 @@ function CardDetails({
         </div>
 
         <div className="detail-actions">
-          <a
-            href={`${path}assets/data/${downloadFile}`}
-            download
-            className="btn-new primary"
-          >
-            <IconDownload />
-            {downloadLabel}
-          </a>
-
           <button type="button" className="btn-close-circle" onClick={onClose}>
             <IconClose />
           </button>
@@ -52,8 +39,6 @@ CardDetails.propTypes = {
   icon: PropTypes.node.isRequired,
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  downloadFile: PropTypes.string.isRequired,
-  downloadLabel: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
 };

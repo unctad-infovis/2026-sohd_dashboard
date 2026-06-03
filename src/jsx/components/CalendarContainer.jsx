@@ -1,14 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const PRESETS = [
-  { date: '2019-01-01', title: 'Beginning of pre-COVID year', label: '1 January 2019' },
-  { date: '2020-03-11', title: 'WHO declares COVID-19 Pandemic', label: '11 March 2020' },
-  { date: '2022-02-24', title: 'Onset War in Ukraine', label: '24 February 2022' },
-  { date: '2023-05-05', title: 'WHO declares end of COVID-19 pandemic', label: '5 May 2023' },
-  { date: '2023-10-07', title: 'Onset Israel-Palestine conflict', label: '7 October 2023' },
-  { date: '2026-02-27', title: 'Start of military escalation in the Middle East', label: '28 February 2026' },
-];
+import { referenceDatePresets } from '../config/referenceDates.js';
 
 function CalendarIcon() {
   return (
@@ -88,7 +80,7 @@ function ReferenceDateContainer({
         <div className="dm-col dm-col-presets">
           <div className="dm-col-label">Preset dates</div>
           <div className="dm-preset-list">
-            {PRESETS.map((p) => (
+            {referenceDatePresets.map((p) => (
               <button
                 key={p.date}
                 type="button"

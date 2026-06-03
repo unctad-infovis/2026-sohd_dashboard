@@ -1,4 +1,4 @@
-@import 'colors.less';
+@import "colors.less";
 
 // ── Modal root ────────────────────────────────────────────────
 .dm-root {
@@ -7,8 +7,23 @@
   overflow: hidden;
   width: 100%;
   max-width: 820px;
+  box-sizing: border-box;
   box-shadow: 0 40px 80px -20px rgba(10, 37, 64, 0.4);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  @media (max-width: 600px) {
+    width: calc(100vw - 16px);
+    max-width: calc(100vw - 16px);
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+    border-radius: 16px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 // ── Header ────────────────────────────────────────────────────
@@ -19,6 +34,11 @@
   display: flex;
   gap: 14px;
   align-items: flex-start;
+
+  @media (max-width: 480px) {
+    padding: 18px 16px;
+    gap: 10px;
+  }
 }
 
 .dm-header-icon {
@@ -82,9 +102,12 @@
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 28px;
+  box-sizing: border-box;
 
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 16px;
   }
 }
 
@@ -161,12 +184,18 @@
   background: #f7f8fa;
   border-radius: 16px;
   padding: 18px;
+  box-sizing: border-box;
+  min-width: 0;
 
   .react-datepicker {
     border: none;
     background: transparent;
     padding: 0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family:
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      sans-serif;
     width: 100%;
     box-shadow: none;
   }
@@ -185,7 +214,9 @@
     padding: 0 0 12px 0;
   }
 
-  .react-datepicker__current-month { display: none; }
+  .react-datepicker__current-month {
+    display: none;
+  }
 
   .react-datepicker__navigation {
     background: #fff;
@@ -199,7 +230,10 @@
     justify-content: center;
     transition: all 0.2s;
 
-    &:hover { background: @unblue; border-color: @unblue; }
+    &:hover {
+      background: @unblue;
+      border-color: @unblue;
+    }
   }
 
   .react-datepicker__navigation-icon::before {
@@ -210,7 +244,8 @@
     top: 10px;
   }
 
-  .react-datepicker__navigation:hover .react-datepicker__navigation-icon::before {
+  .react-datepicker__navigation:hover
+    .react-datepicker__navigation-icon::before {
     border-color: #fff;
   }
 
@@ -232,7 +267,9 @@
     text-align: center;
   }
 
-  .react-datepicker__month { margin: 0; }
+  .react-datepicker__month {
+    margin: 0;
+  }
 
   .react-datepicker__week {
     display: flex;
@@ -252,9 +289,21 @@
     transition: all 0.15s;
     text-align: center;
 
-    &:hover { background: #fff; border-color: @unblue; color: @unblue; border-radius: 10px; }
-    &--outside-month { color: #cbd5e1; }
-    &--today { background: #0080bb; color: #fff; font-weight: 700; border-radius: 10px; }
+    &:hover {
+      background: #fff;
+      border-color: @unblue;
+      color: @unblue;
+      border-radius: 10px;
+    }
+    &--outside-month {
+      color: #cbd5e1;
+    }
+    &--today {
+      background: #0080bb;
+      color: #fff;
+      font-weight: 700;
+      border-radius: 10px;
+    }
 
     &--selected,
     &--keyboard-selected {
@@ -264,7 +313,11 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px -2px rgba(255, 166, 0, 0.5);
 
-      &:hover { background: #ffa600; border-color: transparent; color: #0a0a0a; }
+      &:hover {
+        background: #ffa600;
+        border-color: transparent;
+        color: #0a0a0a;
+      }
     }
   }
 
@@ -274,7 +327,11 @@
     font-weight: 900;
     border-radius: 10px;
 
-    &:hover { background-color: #f8e66b; color: #000; border-radius: 10px; }
+    &:hover {
+      background-color: #f8e66b;
+      color: #000;
+      border-radius: 10px;
+    }
   }
 
   select {
@@ -290,7 +347,9 @@
     outline: none;
     margin: 2px;
 
-    &:hover { border-color: @unblue; }
+    &:hover {
+      border-color: @unblue;
+    }
   }
 
   button {
@@ -305,13 +364,58 @@
     margin: 2px;
     transition: all 0.2s;
 
-    &:hover { background: @unblue; border-color: @unblue; color: #fff; }
+    &:hover {
+      background: @unblue;
+      border-color: @unblue;
+      color: #fff;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+
+    .react-datepicker__day-names,
+    .react-datepicker__week {
+      justify-content: space-between;
+    }
+
+    .react-datepicker__day-name,
+    .react-datepicker__day {
+      width: calc((100vw - 84px) / 7);
+      min-width: 28px;
+      max-width: 36px;
+    }
+
+    .react-datepicker__day {
+      height: calc((100vw - 84px) / 7);
+      min-height: 28px;
+      max-height: 36px;
+      line-height: calc((100vw - 84px) / 7);
+      font-size: 12px;
+    }
+
+    select {
+      min-width: 0;
+      max-width: 128px;
+      padding: 7px 6px;
+      font-size: 12px;
+    }
+
+    button {
+      padding: 7px 8px;
+    }
   }
 }
 
 // ── Portal ────────────────────────────────────────────────────
 .react-datepicker__portal {
-  z-index: 9999;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  z-index: 2147483647;
   background: rgba(10, 20, 40, 0.6);
   backdrop-filter: blur(8px);
   display: flex;
@@ -319,6 +423,9 @@
   justify-content: center;
   padding: 40px 20px;
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
 
   .react-datepicker {
     border-radius: 0;
@@ -328,6 +435,20 @@
     border: none;
     width: 100%;
     max-width: 820px;
+    box-sizing: border-box;
+    flex: 0 0 auto;
+  }
+
+  @media (max-width: 600px) {
+    align-items: flex-start;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 100vh;
+    padding: 12px 8px calc(20px + env(safe-area-inset-bottom));
+
+    .react-datepicker {
+      max-width: calc(100vw - 16px);
+    }
   }
 }
 
@@ -338,7 +459,8 @@
   align-items: center;
   position: relative;
 
-  input {
+  input,
+  .date-picker-trigger {
     color: #fff;
     font-weight: 600;
     background: rgba(10, 20, 40, 0.6);
@@ -349,11 +471,32 @@
     border-radius: 100px;
     backdrop-filter: blur(24px);
     min-width: 220px;
+    max-width: calc(100vw - 48px);
+    box-sizing: border-box;
     transition: all 0.2s;
     cursor: pointer;
+    appearance: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    line-height: 1.2;
+    text-align: center;
 
-    &::placeholder { color: rgba(255, 255, 255, 0.75); font-weight: 500; }
-    &:hover { background: rgba(10, 20, 40, 0.8); }
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.75);
+      font-weight: 500;
+    }
+    &:hover {
+      background: rgba(10, 20, 40, 0.8);
+    }
+    &:focus {
+      outline: none;
+    }
+    &:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.8);
+      outline-offset: 3px;
+    }
   }
 
   .react-datepicker__calendar-icon {
@@ -370,6 +513,44 @@
 }
 
 // ── Misc ──────────────────────────────────────────────────────
-.high-z-index-tooltip { z-index: 2147483648; }
-.tooltip-inner { text-align: left; }
-.fixedDatePicker { top: 0; z-index: 21474836482; }
+.high-z-index-tooltip {
+  z-index: 2147483648;
+}
+.tooltip-inner {
+  text-align: left;
+}
+.fixedDatePicker {
+  top: 0;
+  z-index: 21474836482;
+}
+
+.datePickerContainer {
+  &.in-hero {
+    position: relative;
+    z-index: 6;
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+
+    .react-datepicker__input-container input,
+    .react-datepicker__input-container .date-picker-trigger {
+      background: rgba(10, 20, 40, 0.6) !important;
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      border-radius: @radius-full !important;
+      color: #fff !important;
+      font-size: 14px !important;
+      font-weight: @font-weight-medium !important;
+      padding: 10px 44px 10px 44px !important;
+      min-width: 220px;
+      transition: all 0.2s;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.75) !important;
+      }
+      &:hover {
+        background: rgba(10, 20, 40, 0.8) !important;
+      }
+    }
+  }
+}

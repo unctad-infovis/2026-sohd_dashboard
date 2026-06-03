@@ -1,0 +1,266 @@
+.app_content {
+  .arrow_icon img {
+    height: 15px;
+    margin: 0 4px 4px 0;
+  }
+
+  .tabs_content {
+    margin: 0 auto auto auto;
+    transition-duration: 0.5s;
+    transition-property: opacity;
+    transition-timing-function: linear;
+    padding: 0 40px;
+    @media (max-width: 640px) {
+      padding: 0 20px;
+    }
+    .tab_content {
+      .detail-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #e5e7eb;
+
+        .detail-title-group {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+        }
+
+        .detail-icon {
+          width: 52px;
+          height: 52px;
+          border-radius: 16px;
+          background: linear-gradient(135deg, @unblue 0%, #0080bb 100%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          box-shadow: @shadow-detail-icon;
+          flex-shrink: 0;
+
+          svg {
+            width: 26px;
+            height: 26px;
+          }
+        }
+
+        .detail-title-text {
+          h3 {
+            font-weight: @font-weight-bold;
+            margin: 0;
+          }
+          p {
+            font-size: 13px;
+            color: #666;
+            margin-top: 2px;
+            margin-bottom: 0;
+          }
+        }
+
+        .detail-actions {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          margin-left: auto;
+        }
+      }
+
+      align-content: center;
+      box-sizing: border-box;
+      display: none;
+      flex-wrap: wrap;
+      margin: auto auto;
+      opacity: 0;
+
+      .tab_content_title {
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+
+        @media all and (max-width: @bp-xs) {
+          text-align: left;
+          align-content: space-around;
+          flex-wrap: wrap;
+
+          h3 {
+            font-size: 20px;
+          }
+
+          .detail-header .detail-icon {
+            height: 85px;
+          }
+
+          .detail-title-group {
+            margin-bottom: 20px;
+          }
+        }
+      }
+
+      .frequency_tab {
+        margin-top: 0;
+
+        &:last-child:nth-child(even) {
+          width: 100%;
+
+          .chart_container:last-child {
+            width: auto;
+          }
+        }
+
+        .chart_container {
+          background: #fff;
+          border-radius: @radius-card;
+          border: 1px solid #eef0f3;
+          box-sizing: border-box;
+          margin-bottom: 20px;
+          padding: 20px;
+          width: 615px;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+
+          @media all and (max-width: @bp-md) {
+            width: auto;
+          }
+
+          .iframe_container {
+            height: 100% !important;
+          }
+
+          iframe {
+            border: none;
+            min-width: 100%;
+            width: 0;
+          }
+
+          .chart_bottom_row {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            gap: 12px;
+            margin-top: 15px;
+
+            @media (max-width: 640px) {
+              flex-direction: column;
+              align-items: stretch;
+            }
+          }
+
+          .growths_container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+            margin-left: auto;
+
+            .growth_meta {
+              color: #6e6259;
+              font-size: 12px;
+              font-weight: 400;
+              white-space: nowrap;
+              vertical-align: -1px;
+              margin-left: auto;
+            }
+
+            .growth_container {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              .growth_label {
+                color: #000;
+                display: inline-block;
+                font-size: 18px;
+                font-weight: 600;
+                letter-spacing: -0.01em;
+                margin-right: 10px;
+                margin-bottom: 5px;
+                vertical-align: 5px;
+
+                @media all and (max-width: @bp-md) {
+                  font-size: 14px;
+                }
+              }
+
+              .growth_value {
+                font-size: 28px;
+                font-weight: 600;
+                color: #000;
+                display: inline-block;
+                vertical-align: middle;
+                letter-spacing: -0.5px;
+                line-height: 1;
+
+                .arrow_icon {
+                  display: flex;
+                  align-items: baseline;
+                  gap: 6px;
+
+                  img {
+                    height: 14px;
+                    margin: 0 2px 2px 0;
+                  }
+                }
+
+                @media all and (max-width: @bp-md) {
+                  font-size: 24px;
+                }
+              }
+            }
+          }
+        }
+        .button_default_container.btn-methodology {
+          align-self: flex-end;
+          flex-shrink: 0;
+          display: inline-flex;
+          align-items: center;
+          padding: 10px 20px;
+          border: 1.5px solid #0a0a0a !important;
+          background: transparent;
+          color: #0a0a0a;
+          font-size: 11px;
+          font-weight: @font-weight-semi;
+          letter-spacing: 1.2px;
+          text-transform: uppercase;
+          cursor: pointer;
+          border-radius: 0;
+          transition: all 0.2s;
+          max-width: fit-content;
+          width: auto;
+
+          &:hover {
+            background: #0a0a0a;
+            color: #fff;
+            span {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+  .btn-close-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+      background: #f7f8fa;
+    }
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

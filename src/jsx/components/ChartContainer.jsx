@@ -57,17 +57,21 @@ function ChartContainer({
     growthDate = `Since ${date}`;
   }
 
-  if (series && series.length > 0) {
-    meta.forEach((el) => {
-      const pct = computeGrowth(series, el.value_name, selected_date, frequency);
-      el.value = pct;
-      el.date = `${date.toLocaleString('en-EN', {
+  const displayMeta = meta.map((el) => {
+    if (!series || series.length === 0) return el;
+
+    const pct = computeGrowth(series, el.value_name, selected_date, frequency);
+
+    return {
+      ...el,
+      value: pct,
+      date: `${date.toLocaleString('en-EN', {
         day: 'numeric',
         month: 'long',
         year: 'numeric',
-      })}`;
-    });
-  }
+      })}`,
+    };
+  });
 
   return (
     <div className="frequency_tab">
@@ -110,7 +114,7 @@ function ChartContainer({
             )}
             {series
               && series.length > 0
-              && meta.map(
+              && displayMeta.map(
                 (el) => (
                   <div key={el.label} className="growth_container">
                     <span className="growth_value">
