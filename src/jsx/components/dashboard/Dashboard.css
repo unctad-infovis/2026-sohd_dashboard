@@ -1,0 +1,61 @@
+@import './styles/cards-details.css';
+@import './styles/cards-indicator-mobile.css';
+@import './styles/cards-indicator.css';
+@import './styles/hero.css';
+
+@import 'react-datepicker/dist/react-datepicker.css';
+@import './styles/react-datepicker.css';
+
+/* ── Typography & base ─────────────────────────────────────────*/
+
+:root {
+  --radius-card: 20px;
+  --radius-chip: 10px;
+  --radius-icon: 12px;
+  --radius-full: 100px;
+  --transition-default: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-card: 0 20px 60px -20px rgba(10, 37, 64, 0.25), 0 4px 12px -4px rgba(10, 37, 64, 0.08);
+  --shadow-card-hover: 0 30px 80px -20px rgba(10, 37, 64, 0.3);
+  --shadow-icon: 0 6px 16px -4px rgba(0, 158, 219, 0.4);
+  --shadow-detail-icon: 0 8px 20px -4px rgba(0, 158, 219, 0.4);
+}
+
+#app-root-2026-sohd_dashboard {
+  .app {
+    -webkit-font-smoothing: antialiased;
+    background: #f5f5f5;
+    border-radius: 33px;
+    box-sizing: border-box;
+    color: #0a0a0a;
+    margin: auto auto;
+    overflow-x: hidden;
+    padding: 25px 0;
+    width: 100%;
+  }
+
+  .app_content {
+    height: auto;
+    transition-duration: 0.5s;
+    transition-property: opacity;
+    transition-timing-function: linear;
+    h3 {
+      font-size: 32px;
+      font-weight: bolder;
+    }
+    .cursor-pointer {
+      cursor: pointer;
+    }
+    .dashboard-note {
+      box-sizing: border-box;
+      color: #4b5563;
+      font-size: 16px !important;
+      font-weight: var(--un-font-weight-normal);
+      line-height: 1.5;
+      margin: 32px auto 0 !important;
+      padding: 0 40px;
+      @media (max-width: 640px) {
+        padding: 0 20px;
+      }
+    }
+  }
+}

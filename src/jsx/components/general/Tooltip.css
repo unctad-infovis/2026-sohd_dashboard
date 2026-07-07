@@ -1,0 +1,46 @@
+#app-root-2026-sohd_dashboard {
+  .tooltip-wrapper {
+    align-items: center;
+    display: inline-flex;
+    position: relative;
+  }
+
+  .tooltip-bubble {
+    background: #111827;
+    border-radius: 8px;
+    bottom: calc(100% + 16px);
+    color: #fff;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    left: 50%;
+    line-height: 1.2;
+    max-width: 260px;
+    opacity: 0;
+    padding: 10px 14px;
+    pointer-events: none;
+    position: absolute;
+    text-align: left;
+    text-transform: none;
+    transform: translateX(-50%);
+    transition: opacity 0.15s ease;
+    white-space: normal;
+    width: max-content;
+    z-index: 200;
+
+    &::after {
+      border: 7px solid transparent;
+      border-top-color: #111827;
+      bottom: -14px;
+      content: '';
+      left: 50%;
+      position: absolute;
+      transform: translateX(-50%);
+    }
+  }
+
+  .tooltip-wrapper:hover .tooltip-bubble,
+  .tooltip-wrapper:focus-within .tooltip-bubble {
+    opacity: 1;
+  }
+}
