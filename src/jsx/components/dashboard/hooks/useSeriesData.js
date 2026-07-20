@@ -1,6 +1,6 @@
+import BasePath from '@unctad-infovis/general-tools/helpers/BasePath.js';
+import CSVtoJSON from '@unctad-infovis/general-tools/helpers/CsvToJson.js';
 import { useEffect, useState } from 'react';
-import BasePath from '../../../helpers/BasePath.js';
-import CSVtoJSON from '../../../helpers/CsvToJson.js';
 
 const path = BasePath();
 const DATA_CACHE_MINUTES = 10;

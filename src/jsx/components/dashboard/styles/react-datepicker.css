@@ -413,6 +413,38 @@
     }
   }
 }
+
+.datePickerContainer {
+  &.in-hero {
+    display: flex;
+    justify-content: center;
+    margin-top: 0;
+    position: relative;
+    z-index: 6;
+
+    .react-datepicker__input-container input,
+    .react-datepicker__input-container .date-picker-trigger {
+      backdrop-filter: blur(24px);
+      background: rgba(10, 20, 40, 0.6);
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 14px;
+      font-weight: var(--un-font-weight-medium);
+      min-width: 220px;
+      padding: 10px 44px 10px 44px;
+      transition: all 0.2s;
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.75);
+      }
+    }
+    .react-datepicker__input-container .date-picker-trigger:hover,
+    .react-datepicker__input-container input:hover {
+      background: rgba(10, 20, 40, 0.8);
+    }
+  }
+}
+
 /* ── Input pill ────────────────────────────────────────────────*/
 #app-root-2026-sohd_dashboard .react-datepicker__input-container {
   z-index: 100;
@@ -482,34 +514,4 @@
 .fixedDatePicker {
   top: 0;
   z-index: 21474836482;
-}
-
-.datePickerContainer {
-  &.in-hero {
-    display: flex;
-    justify-content: center;
-    margin-top: 0;
-    position: relative;
-    z-index: 6;
-
-    .react-datepicker__input-container input,
-    .react-datepicker__input-container .date-picker-trigger {
-      backdrop-filter: blur(24px);
-      background: rgba(10, 20, 40, 0.6) !important;
-      border-radius: var(--radius-full) !important;
-      border: 1px solid rgba(255, 255, 255, 0.15) !important;
-      color: #fff !important;
-      font-size: 14px !important;
-      font-weight: var(--un-font-weight-medium) !important;
-      min-width: 220px;
-      padding: 10px 44px 10px 44px !important;
-      transition: all 0.2s;
-      &::placeholder {
-        color: rgba(255, 255, 255, 0.75) !important;
-      }
-      &:hover {
-        background: rgba(10, 20, 40, 0.8) !important;
-      }
-    }
-  }
 }

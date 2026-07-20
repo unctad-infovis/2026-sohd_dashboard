@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import './Dashboard.css';
 
-import scrollIntoView from 'scroll-into-view';
-import BasePath from './../../helpers/BasePath.js';
+import BasePath from '@unctad-infovis/general-tools/helpers/BasePath.js';
 import CalendarDatePicker from './components/CalendarDatePicker.jsx';
 import CardDetails from './components/CardDetails.jsx';
 import CardIndicator from './components/CardIndicator.jsx';
@@ -86,18 +85,10 @@ function App() {
     });
 
     if (scroll === true) {
-      scrollIntoView(document.querySelector(`${appID} .app`), {
-        align: {
-          left: 0,
-          leftOffset: 0,
-          lockX: false,
-          lockY: false,
-          top: 0,
-          topOffset: 100
-        },
-        cancellable: false,
-        time: 0
-      });
+      const target = document.querySelector(`${appID} .app`);
+      if (target) {
+        window.scrollTo({ behavior: 'auto', top: target.getBoundingClientRect().top + window.scrollY - 100 });
+      }
     }
   };
 

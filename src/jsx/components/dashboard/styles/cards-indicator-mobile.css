@@ -88,19 +88,19 @@
 
     .mobile-date-bar .react-datepicker__input-container input,
     .mobile-date-bar .react-datepicker__input-container .date-picker-trigger {
-      background: rgba(10, 20, 40, 0.82) !important;
-      border-radius: var(--radius-full) !important;
-      border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      background: rgba(10, 20, 40, 0.82);
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       box-shadow: 0 14px 36px -18px rgba(10, 37, 64, 0.75);
-      color: #fff !important;
-      font-size: 14px !important;
-      font-weight: var(--un-font-weight-bold) !important;
+      color: #fff;
+      font-size: 14px;
+      font-weight: var(--un-font-weight-bold);
       height: 48px;
-      max-width: none !important;
-      min-width: 0 !important;
-      padding: 10px 48px !important;
+      max-width: none;
+      min-width: 0;
+      padding: 10px 48px;
       text-align: center;
-      width: 100% !important;
+      width: 100%;
     }
 
     .mobile-date-bar .react-datepicker__calendar-icon {
@@ -108,7 +108,7 @@
     }
 
     .detail-header .detail-actions {
-      display: none !important;
+      display: none;
     }
   }
 }

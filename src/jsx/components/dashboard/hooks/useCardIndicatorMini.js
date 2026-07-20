@@ -1,15 +1,10 @@
 import { useEffect, useState } from 'react';
 
-function useCardIndicatorMini({
-  activeSection,
-  items,
-  appSelector,
-  breakpoint = 768,
-}) {
+function useCardIndicatorMini({ activeSection, items, appSelector, breakpoint = 768 }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const activeItem = items.find((item) => item.section === activeSection);
+    const activeItem = items.find(item => item.section === activeSection);
     let frameId;
 
     const updateVisibility = () => {
@@ -18,13 +13,9 @@ function useCardIndicatorMini({
         return;
       }
 
-      const activeHeader = document.querySelector(
-        `${appSelector} ${activeItem.tabClass} .detail-header`,
-      );
+      const activeHeader = document.querySelector(`${appSelector} ${activeItem.tabClass} .detail-header`);
 
-      setIsVisible(
-        Boolean(activeHeader) && activeHeader.getBoundingClientRect().bottom <= 0,
-      );
+      setIsVisible(Boolean(activeHeader) && activeHeader.getBoundingClientRect().bottom <= 0);
     };
 
     const requestUpdate = () => {

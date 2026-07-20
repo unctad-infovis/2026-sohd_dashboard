@@ -1,7 +1,7 @@
+import Tooltip from '@unctad-infovis/general-tools/components/Tooltip.jsx';
+import BasePath from '@unctad-infovis/general-tools/helpers/BasePath.js';
 import { useCallback, useEffect, useRef } from 'react';
 import computeGrowth from '../helpers/computeGrowth.js';
-import BasePath from '../../../helpers/BasePath.js';
-import Tooltip from '../../general/Tooltip.jsx';
 
 function ChartContainer({ id, src, meta, series, title, selected_date = new Date(), frequency, methodology = '' }) {
   const iframeRef = useRef(null);
@@ -16,7 +16,7 @@ function ChartContainer({ id, src, meta, series, title, selected_date = new Date
     });
 
     iframeContainers.forEach(container => {
-      container.style.height = `${maxHeight}px`;
+      container.style.height = `100%`;
     });
   }, []);
 
@@ -71,7 +71,7 @@ function ChartContainer({ id, src, meta, series, title, selected_date = new Date
         <div className="chart_bottom_row">
           {methodology && (
             <div className="button_default_container btn-methodology">
-              <Tooltip text={methodology}>
+              <Tooltip content={methodology}>
                 <span>Methodology</span>
               </Tooltip>
             </div>
@@ -96,7 +96,7 @@ function ChartContainer({ id, src, meta, series, title, selected_date = new Date
                     ) : (
                       <div className="arrow_icon">
                         <span className="growth_label">{el.label}</span>
-                        <Tooltip text="The date selected has no data for this Indicator. Please select another date.">
+                        <Tooltip content="The date selected has no data for this Indicator. Please select another date.">
                           <span>
                             N/A
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginLeft: '6px', verticalAlign: '-3px' }}>

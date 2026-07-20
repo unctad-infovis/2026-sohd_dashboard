@@ -50,6 +50,24 @@
     margin-bottom: 16px;
   }
 
+  .ic-arrow {
+    font-size: 26px;
+    font-weight: var(--un-font-weight-bolder);
+    line-height: 1;
+  }
+  .ic-value {
+    font-size: 44px;
+    font-weight: var(--un-font-weight-boldest);
+    letter-spacing: -1.5px;
+    line-height: 1;
+    color: #0a0a0a;
+  }
+  .ic-unit {
+    font-size: 18px;
+    font-weight: var(--un-font-weight-bold);
+    color: #666;
+  }
+
   .ic-value-row {
     display: flex;
     align-items: baseline;
@@ -68,24 +86,6 @@
     &.up .ic-arrow {
       color: var(--un-color-blue);
     }
-  }
-
-  .ic-arrow {
-    font-size: 26px;
-    font-weight: var(--un-font-weight-bolder);
-    line-height: 1;
-  }
-  .ic-value {
-    font-size: 44px;
-    font-weight: var(--un-font-weight-boldest);
-    letter-spacing: -1.5px;
-    line-height: 1;
-    color: #0a0a0a;
-  }
-  .ic-unit {
-    font-size: 18px;
-    font-weight: var(--un-font-weight-bold);
-    color: #666;
   }
 
   .ic-nodata {

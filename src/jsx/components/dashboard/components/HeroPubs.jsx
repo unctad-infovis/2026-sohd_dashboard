@@ -1,6 +1,6 @@
+import BasePath from '@unctad-infovis/general-tools/helpers/BasePath.js';
 import { useEffect, useState } from 'react';
 import heroPublications from '../config/heroPublications.js';
-import BasePath from '../../../helpers/BasePath.js';
 
 const path = BasePath();
 

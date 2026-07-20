@@ -5,7 +5,8 @@ import Article from '../Article.mdx';
 // Storyboard
 import Dashboard from './components/dashboard/Dashboard.jsx';
 
-import './../styles/styles.css';
+import '@unctad-infovis/general-tools/styles/styles.css';
+import './App.css';
 
 const components = {
   Dashboard

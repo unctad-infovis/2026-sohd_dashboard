@@ -1,7 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(curl -s \"https://storage.unctad.org/2026-sohd_dashboard/js/2026-sohd_dashboard.min.js\")"
-    ]
+    "allow": ["Bash(curl -s \"https://storage.unctad.org/2026-sohd_dashboard/js/2026-sohd_dashboard.min.js\")"]
   }
 }

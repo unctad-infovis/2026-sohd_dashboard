@@ -46,27 +46,6 @@
       border-radius: inherit;
     }
 
-    /*── Hero content ──────────────────────────────────────────*/
-    .hero-content {
-      position: relative;
-      padding: 48px;
-      text-align: center;
-      z-index: 5;
-      width: 100%;
-      pointer-events: none;
-
-      h1,
-      p,
-      .datePickerContainer,
-      * {
-        pointer-events: auto;
-      }
-      p {
-        max-width: 100%;
-        text-align: center;
-      }
-    }
-
     h1 {
       font-size: 56px;
       font-weight: var(--un-font-weight-boldest);
@@ -89,7 +68,7 @@
       font-size: 18px;
       font-weight: var(--un-font-weight-normal);
       max-width: 680px;
-      margin: 0 auto 32px !important;
+      margin: 0 auto 32px;
       line-height: 1.5;
       text-shadow:
         0 2px 16px rgba(0, 0, 0, 0.6),
@@ -112,6 +91,26 @@
       }
       p {
         font-size: 15px;
+      }
+    }
+    /*── Hero content ──────────────────────────────────────────*/
+    .hero-content {
+      position: relative;
+      padding: 48px;
+      text-align: center;
+      z-index: 5;
+      width: 100%;
+      pointer-events: none;
+
+      h1,
+      p,
+      .datePickerContainer,
+      * {
+        pointer-events: auto;
+      }
+      p {
+        max-width: 100%;
+        text-align: center;
       }
     }
   }
