@@ -1,22 +1,20 @@
 import BasePath from '@unctad-infovis/general-tools/helpers/BasePath.js';
-import { useEffect, useState } from 'react';
+import useClickOutside from '@unctad-infovis/general-tools/helpers/UseClickOutside.js';
+import { useRef, useState } from 'react';
 import heroPublications from '../config/heroPublications.js';
 
 const path = BasePath();
 
 function HeroPubs() {
   const [pubsOpen, setPubsOpen] = useState(false);
+  const containerRef = useRef(null);
   const publicationCount = heroPublications.length;
   const publicationLabel = publicationCount === 1 ? 'publication' : 'publications';
 
-  useEffect(() => {
-    const handleClickOutside = () => setPubsOpen(false);
-    document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
-  }, []);
+  useClickOutside(containerRef, () => setPubsOpen(false), pubsOpen);
 
   return (
-    <div className={`hero-pubs${pubsOpen ? ' open' : ''}`} role="presentation">
+    <div className={`hero-pubs${pubsOpen ? ' open' : ''}`} ref={containerRef} role="presentation">
       <button type="button" className="hero-pubs-trigger" onClick={() => setPubsOpen(prev => !prev)}>
         <span>Related publications</span>
         <span className="hero-pubs-count">{publicationCount}</span>
