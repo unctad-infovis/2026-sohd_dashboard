@@ -30,7 +30,7 @@
     "vite": "^8.1.5"
   },
   "dependencies": {
-    "@unctad-infovis/general-tools": "^1.4.0",
+    "@unctad-infovis/general-tools": "^1.7.0",
     "moment": "^2.30.1",
     "react-datepicker": "^9.1.0"
   },
